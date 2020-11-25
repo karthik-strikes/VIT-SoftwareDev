@@ -1,0 +1,42 @@
+import java.util.*;
+public class Test  
+{ 
+    public static void main(String[] args) 
+    { 
+        Scanner sc=new Scanner(System.in);
+        String str = sc.nextLine();
+        int score=0;
+        switch(str) 
+        { 
+            case "defend": 
+                System.out.println(0); 
+                break; 
+            case "run": 
+                System.out.println(1); 
+                break; 
+            case "runfast": 
+                System.out.println(2); 
+                break;
+            case "coverdrive": 
+                System.out.println(2); 
+                break;
+            case "ondrive": 
+                System.out.println(2); 
+                break;
+            case "straightdrive": 
+                System.out.println(2); 
+                break;
+            case "squarecut": 
+                System.out.println(4); 
+                break;
+            case "hook": 
+                System.out.println(6); 
+                break;
+            case "fulltoss": 
+                System.out.println(6); 
+                break;
+            default: 
+                System.out.println("no match"); 
+        } 
+    } 
+}
