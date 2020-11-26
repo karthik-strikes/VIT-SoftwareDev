@@ -1,0 +1,121 @@
+import java.util.*;
+public class Karthik {
+
+    public static String mat[][];
+    public static void main(String args[])
+    {
+        mat = new String[5][5];
+        System.out.print("Enter player 1 intital positions: ");
+        Scanner sc = new Scanner(System.in);
+        String pA[] = sc.nextLine().split(" ");
+        System.out.println("Enter player 2 intital positions: ");
+        String pB[] = sc.nextLine().split(" ");
+        for(int i=0;i<5;i++)
+        {
+            mat[0][i] = "A-" +pA[i];
+            mat[1][i]="-";
+            mat[2][i]="-";
+            mat[3][i]="-";
+            mat[4][i] = "B-"+pB[i];
+        }
+        int temp=0;
+        while(true)
+        {
+            
+            try
+            {
+                String s = sc.nextLine();
+                if(s.equals(null))
+                    break;
+                if(temp==0)
+                {
+                    temp++;
+                    updateA(s);
+                }
+                else
+                {
+                    temp--;
+                    updateB(s);
+                }
+            }
+            catch(Exception e)
+            {
+                break;
+            }
+            
+        }
+        
+    }
+    
+    public static void updateA(String s)
+    {
+        String temp[] = s.split(":");
+        for(int i=0;i<5;i++)
+        {
+            for(int j=4;j>=0;j--)
+            {
+                if(mat[i][j].contains(temp[0]))
+                {
+                    changePosA(i,j,mat[i][j],temp[1]);
+                }
+            }
+        }
+    }
+    public static void changePosA(int row,int col,String act,String move)
+    {
+        if(move.equals("F"))
+        {
+            if(row==0)
+            {
+                System.out.println("InValid Move");
+                return;
+            }
+            mat[row][col] = "-";
+            mat[--row][col] = act;
+        }
+        else if(move.equals("B"))
+        {
+            if(row==4)
+            {
+                System.out.println("Invalid Move");
+                return;
+            }
+            mat[row][col] = "-";
+            mat[++row][col] = act;
+        }
+        if(move.equals("L"))
+        {
+            if(col==0)
+            {
+                System.out.println("InValid Move");
+                return;
+            }
+            mat[row][col] = "-";
+            mat[row][--col] = act;
+        }
+        else if(move.equals("R"))
+        {
+            if(row==4)
+            {
+                System.out.println("Invalid Move");
+                return;
+            }
+            mat[row][col] = "-";
+            mat[++row][col] = act;
+        }     
+    }
+    public static void updateB(String s)
+    {
+        
+    }
+    public static void printMat()
+    {
+        for(int i=0;i<5;i++)
+        {
+            for(int j=0;j<5;j++)
+            {
+                System.out.print(mat[i][j]);
+            }
+        }
+    }
+}
